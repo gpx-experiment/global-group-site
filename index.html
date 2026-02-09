@@ -1,219 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Professional Group — Страхование</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  /* corporate / bank-like */
   --bg:#f4f6fb;
   --card:#ffffff;
   --text:#0b1220;
-  --muted:#546078;
+  --muted:#5b6478;
   --border:#e6eaf2;
 
-  --accent:#2436d6;      /* main blue */
-  --accent2:#1b2bb0;     /* hover / dark */
-  --focus:rgba(36,54,214,.14);
+  --blue:#2436d6;
+  --blue-dark:#1b2bb0;
 
-  --radius:16px;
-  --radiusSm:12px;
-  --shadow:0 14px 40px rgba(12,18,32,.08);
-  --shadowSm:0 8px 22px rgba(12,18,32,.06);
-
-  --max:1120px;
+  --radius:18px;
+  --shadow:0 20px 40px rgba(12,18,32,.08);
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
 body{
   margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   background:var(--bg);
   color:var(--text);
-  line-height:1.45;
 }
 
-a{color:inherit;text-decoration:none}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+a{text-decoration:none;color:inherit}
 
-/* ===== Header (strict, bank-like) ===== */
+.container{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* ===== HEADER ===== */
 header{
-  position:sticky;top:0;z-index:10;
-  background:rgba(244,246,251,.9);
+  position:sticky;
+  top:0;
+  background:rgba(244,246,251,.95);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border);
+  z-index:10;
 }
 .nav{
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   padding:14px 0;
-  gap:14px;
 }
 .brand{
-  display:flex;align-items:center;gap:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
   font-weight:800;
-  letter-spacing:.4px;
+  letter-spacing:.6px;
 }
-.logo{
-  height:34px; width:auto; display:block; /* keep proportions */
-}
-.brand .name{
-  font-size:14px;
-  letter-spacing:.8px;
+.brand img{
+  height:34px;
 }
 .menu{
-  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  display:flex;
+  gap:12px;
+  align-items:center;
 }
 .menu a{
-  color:var(--muted);
-  font-weight:700;
   font-size:13px;
+  font-weight:700;
+  color:var(--muted);
   padding:10px 12px;
   border-radius:12px;
 }
-.menu a:hover{background:#eef2ff;color:var(--text)}
-@media (max-width:920px){ .menu .hide-sm{display:none} }
-
-/* ===== Buttons (no “puffy”, bank style) ===== */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:11px 16px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:#fff;
-  font-weight:800;
-  cursor:pointer;
-  box-shadow:0 2px 10px rgba(12,18,32,.03);
-}
-.btn:hover{border-color:#d7deea}
-.btn.primary{
-  background:var(--accent);
-  border-color:transparent;
-  color:#fff;
-  box-shadow:0 14px 28px rgba(36,54,214,.18);
-}
-.btn.primary:hover{background:var(--accent2)}
-
-/* ===== Hero shell ===== */
-.hero{padding:26px 0 18px}
-.heroShell{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  padding:22px;
-}
-.grid{
-  display:grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap:18px;
-  align-items:start;
-}
-@media (max-width:920px){ .grid{grid-template-columns:1fr} }
-
-h1{
-  margin:0 0 10px;
-  font-size:44px;
-  line-height:1.06;
-  letter-spacing:-.9px;
-}
-@media (max-width:620px){ h1{font-size:34px} }
-
-.sub{
-  margin:0 0 16px;
-  color:var(--muted);
-  font-size:15px;
-  max-width:70ch;
-}
-
-.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-
-/* ===== “Bank chips” (clean, not too many) ===== */
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.chip{
-  border:1px solid var(--border);
-  background:#fff;
-  color:var(--muted);
-  font-weight:800;
-  font-size:12px;
-  padding:9px 12px;
-  border-radius:999px;
-}
-
-/* ===== KPI tiles ===== */
-.kpis{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:12px;
-  margin-top:16px;
-}
-@media (max-width:620px){ .kpis{grid-template-columns:1fr} }
-.kpi{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:var(--radiusSm);
-  padding:14px;
-  box-shadow:var(--shadowSm);
-}
-.kpi b{display:block;font-size:14px}
-.kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
-
-/* ===== Right form card ===== */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  box-shadow:var(--shadowSm);
-}
-.form{padding:18px}
-.form h3{margin:0 0 6px;font-size:16px}
-.form p{margin:0 0 14px;color:var(--muted);font-size:13px}
-
-label{display:block;margin:10px 0 6px;color:var(--muted);font-size:12px;font-weight:800}
-input,select,textarea{
-  width:100%;
-  padding:12px 12px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  outline:none;
-  font-size:14px;
-  background:#fff;
+.menu a:hover{
+  background:#eef2ff;
   color:var(--text);
 }
-textarea{min-height:92px;resize:vertical}
-input:focus,select:focus,textarea:focus{
-  border-color:rgba(36,54,214,.35);
-  box-shadow:0 0 0 4px var(--focus);
-}
-.form-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
-.hint{font-size:12px;color:var(--muted)}
-#result{margin-top:10px}
-
-/* ===== Sections ===== */
-section{padding:18px 0}
-.title{font-size:18px;font-weight:900;margin:0 0 12px}
-.cards{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:14px;
-}
-@media (max-width:920px){ .cards{grid-template-columns:1fr} }
-.service{
-  padding:16px;
-}
-.service h4{margin:0 0 6px;font-size:15px}
-.service p{margin:0;color:var(--muted);font-size:13px}
-.tag{
-  display:inline-flex;margin-top:10px;
+.btn{
+  padding:11px 18px;
+  border-radius:12px;
+  font-weight:800;
+  font-size:13px;
   border:1px solid var(--border);
-  border-radius:999px;
-  padding:7px 10px;
-  font-size:12px;
-  font-weight:900;
   background:#fff;
 }
+.btn.primary{
+  background:var(--blue);
+  color:#fff;
+  border:none;
+  box-shadow:0 14px 28px rgba(36,54,214,.2);
+}
+.btn.primary:hover{background:var(--blue-dark)}
 
-/* ===== Footer ===== */
+/* ===== HERO ===== */
+.hero{
+  padding:28px 0;
+}
+.hero-box{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  padding:24px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:20px;
+}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+}
+
+h1{
+  margin:0 0 12px;
+  font-size:42px;
+  line-height:1.08;
+  letter-spacing:-.8px;
+}
+.subtitle{
+  font-size:15px;
+  color:var(--muted);
+  margin-bottom:18px;
+  max-width:640px;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.tags{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.tag{
+  border:1px solid var(--border);
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  color:var(--muted);
+}
+
+/* ===== KPI ===== */
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+@media(max-width:700px){
+  .kpis{grid-template-columns:1fr}
+}
+.kpi{
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+}
+.kpi b{font-size:14px}
+.kpi span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ===== FORM ===== */
+.card{
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:#fff;
+  padding:18px;
+}
+.card h3{
+  margin:0 0 6px;
+  font-size:16px;
+}
+.card p{
+  margin:0 0 14px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+label{
+  display:block;
+  margin:10px 0 6px;
+  font-size:12px;
+  font-weight:800;
+  color:var(--muted);
+}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  font-size:14px;
+}
+textarea{min-height:90px}
+input:focus,select:focus,textarea:focus{
+  outline:none;
+  border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(36,54,214,.15);
+}
+.form-actions{
+  display:flex;
+  gap:12px;
+  margin-top:14px;
+  align-items:center;
+}
+.hint{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ===== SERVICES ===== */
+section{padding:24px 0}
+.section-title{
+  font-size:18px;
+  font-weight:900;
+  margin-bottom:14px;
+}
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+@media(max-width:900px){
+  .services{grid-template-columns:1fr}
+}
+.service{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+.service h4{margin:0 0 6px}
+.service p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+}
+.service .badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  font-size:12px;
+  font-weight:800;
+}
+
+/* ===== FOOTER ===== */
 footer{
   border-top:1px solid var(--border);
-  padding:18px 0 26px;
+  padding:20px 0 28px;
   color:var(--muted);
-  margin-top:12px;
+  font-size:13px;
 }
-.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.footer{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
 </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">
+      <img src="arxa_fonsuz.png" alt="Global Professional Group">
+      <span>GLOBAL GROUP</span>
+    </a>
+    <nav class="menu">
+      <a href="#services">Услуги</a>
+      <a href="#how">Как работаем</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#contact">Контакты</a>
+      <a class="btn primary" href="#form">Рассчитать</a>
+    </nav>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="container">
+    <div class="hero-box">
+      <div class="hero-grid">
+        <div>
+          <h1>Страхование без нервов.<br>Скорость — наша религия.</h1>
+          <p class="subtitle">
+            Global Professional Group — лицензированный страховой брокер.
+            Быстрый расчёт, прозрачные условия, сопровождение клиента и помощь при страховом случае.
+          </p>
+
+          <div class="actions">
+            <a href="#form" class="btn primary">Получить расчёт</a>
+            <a href="#services" class="btn">Смотреть услуги</a>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Официальные сервисы</span>
+            <span class="tag">Прозрачные условия</span>
+            <span class="tag">Помощь при страховом случае</span>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <b>Быстро</b>
+              <span>обычно 1–2 часа на расчёт</span>
+            </div>
+            <div class="kpi">
+              <b>Честно</b>
+              <span>без мелкого шрифта</span>
+            </div>
+            <div class="kpi">
+              <b>Под ключ</b>
+              <span>от заявки до консультации по убытку</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="form">
+          <h3>Заявка на расчёт</h3>
+          <p>Заполните 30 секунд — мы свяжемся и уточним детали.</p>
+
+          <form id="leadForm">
+            <label>Имя</label>
+            <input required placeholder="Например: Вугар">
+
+            <label>Телефон / WhatsApp</label>
+            <input required placeholder="+994 XX XXX XX XX">
+
+            <label>Что нужно?</label>
+            <select required>
+              <option value="">Выберите</option>
+              <option>КАСКО</option>
+              <option>ОСАГО</option>
+              <option>Имущество</option>
+              <option>Путешествия</option>
+            </select>
+
+            <label>Коротко о задаче</label>
+            <textarea placeholder="Марка, модель, год, стоимость и т.п."></textarea>
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Отправить</button>
+              <span class="hint">Мы свяжемся с вами</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">Услуги</h2>
+    <div class="services">
+      <div class="service">
+        <h4>КАСКО</h4>
+        <p>Защита авто от ДТП, угона, стихий и других рисков.</p>
+        <span class="badge">Для авто</span>
+      </div>
+      <div class="service">
+        <h4>ОСАГО</h4>
+        <p>Обязательное страхование с понятными условиями.</p>
+        <span class="badge">База</span>
+      </div>
+      <div class="service">
+        <h4>Имущество</h4>
+        <p>Дом и квартира: пожар, затопление, кража.</p>
+        <span class="badge">Недвижимость</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer">
+    <div>© 2026 Global Professional Group</div>
+    <div>Страховой брокер</div>
+  </div>
+</footer>
+
+</body>
+</html>
