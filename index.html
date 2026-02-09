@@ -1,397 +1,662 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Professional Group — Страхование</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Global Professional Group — страховое агентство</title>
+  <meta name="description" content="Global Professional Group — страховое агентство. КАСКО, ОСАГО, имущество, путешествия, корпоративное страхование. Консультация, подбор, сопровождение убытков." />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#f4f6fb;
-  --card:#ffffff;
-  --text:#0b1220;
-  --muted:#5b6478;
-  --border:#e6eaf2;
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#566079;
+      --border:#e6ebf3;
 
-  --blue:#2436d6;
-  --blue-dark:#1b2bb0;
+      --accent:#1f3bd6;
+      --accent2:#162aa8;
+      --accentSoft:#eef2ff;
 
-  --radius:18px;
-  --shadow:0 20px 40px rgba(12,18,32,.08);
-}
+      --radius:18px;
+      --radiusSm:14px;
+      --shadow:0 18px 42px rgba(12,18,32,.08);
+      --shadowSm:0 10px 26px rgba(12,18,32,.06);
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:var(--bg);
-  color:var(--text);
-}
+      --max:1180px;
+    }
 
-a{text-decoration:none;color:inherit}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+    .anchor{scroll-margin-top: 92px;}
 
-.container{
-  max-width:1120px;
-  margin:0 auto;
-  padding:0 24px;
-}
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:20;
+      background:rgba(246,248,251,.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:900; letter-spacing:.4px;
+      white-space:nowrap;
+    }
+    .brand img{height:34px;width:auto;display:block} /* logo unchanged */
+    .brand .t{font-size:14px; letter-spacing:.9px}
+    nav{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      font-size:13px; font-weight:800; color:var(--muted);
+      padding:10px 12px; border-radius:12px;
+    }
+    nav a:hover{background:var(--accentSoft); color:var(--text)}
+    @media (max-width: 980px){ nav .hide{display:none} }
 
-/* ===== HEADER ===== */
-header{
-  position:sticky;
-  top:0;
-  background:rgba(244,246,251,.95);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-  z-index:10;
-}
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-  letter-spacing:.6px;
-}
-.brand img{
-  height:34px;
-}
-.menu{
-  display:flex;
-  gap:12px;
-  align-items:center;
-}
-.menu a{
-  font-size:13px;
-  font-weight:700;
-  color:var(--muted);
-  padding:10px 12px;
-  border-radius:12px;
-}
-.menu a:hover{
-  background:#eef2ff;
-  color:var(--text);
-}
-.btn{
-  padding:11px 18px;
-  border-radius:12px;
-  font-weight:800;
-  font-size:13px;
-  border:1px solid var(--border);
-  background:#fff;
-}
-.btn.primary{
-  background:var(--blue);
-  color:#fff;
-  border:none;
-  box-shadow:0 14px 28px rgba(36,54,214,.2);
-}
-.btn.primary:hover{background:var(--blue-dark)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 16px; border-radius:12px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-weight:900; font-size:13px;
+      cursor:pointer;
+      box-shadow:0 2px 10px rgba(12,18,32,.03);
+    }
+    .btn:hover{border-color:#d5ddec}
+    .btn.primary{
+      background:var(--accent);
+      border-color:transparent;
+      color:#fff;
+      box-shadow:0 14px 28px rgba(31,59,214,.18);
+    }
+    .btn.primary:hover{background:var(--accent2)}
+    .btn.ghost{
+      background:transparent;
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
 
-/* ===== HERO ===== */
-.hero{
-  padding:28px 0;
-}
-.hero-box{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
-  box-shadow:var(--shadow);
-  padding:24px;
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:20px;
-}
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-}
+    /* Hero */
+    .hero{padding:26px 0 14px}
+    .heroBox{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){ .heroGrid{grid-template-columns:1fr} }
+    h1{
+      margin:0 0 12px;
+      font-size:44px;
+      line-height:1.07;
+      letter-spacing:-.9px;
+    }
+    @media (max-width: 640px){ h1{font-size:34px} }
+    .lead{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:15px;
+      max-width: 72ch;
+    }
+    .trustRow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin:14px 0 0;
+    }
+    .pill{
+      border:1px solid var(--border);
+      background:#fff;
+      padding:9px 12px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
 
-h1{
-  margin:0 0 12px;
-  font-size:42px;
-  line-height:1.08;
-  letter-spacing:-.8px;
-}
-.subtitle{
-  font-size:15px;
-  color:var(--muted);
-  margin-bottom:18px;
-  max-width:640px;
-}
+    /* Side card */
+    .side{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      box-shadow:var(--shadowSm);
+      padding:16px;
+    }
+    .side h3{margin:0 0 8px; font-size:15px}
+    .side p{margin:0 0 12px; color:var(--muted); font-size:13px}
+    .miniGrid{
+      display:grid; gap:10px;
+      grid-template-columns: 1fr;
+    }
+    .miniItem{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      background:#fff;
+    }
+    .miniItem b{display:block; font-size:13px}
+    .miniItem span{display:block; margin-top:3px; color:var(--muted); font-size:12px}
 
-.actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:18px;
-}
+    /* Sections */
+    section{padding:18px 0}
+    .title{
+      font-size:18px; font-weight:900;
+      margin:0 0 12px;
+    }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
 
-.tags{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.tag{
-  border:1px solid var(--border);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:800;
-  color:var(--muted);
-}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radiusSm);
+      box-shadow: var(--shadowSm);
+      padding:16px;
+    }
+    .card h4{margin:0 0 6px; font-size:15px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+    .tag{
+      display:inline-flex;
+      margin-top:10px;
+      font-size:12px;
+      font-weight:900;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+    }
 
-/* ===== KPI ===== */
-.kpis{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:18px;
-}
-@media(max-width:700px){
-  .kpis{grid-template-columns:1fr}
-}
-.kpi{
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px;
-}
-.kpi b{font-size:14px}
-.kpi span{
-  display:block;
-  margin-top:4px;
-  font-size:12px;
-  color:var(--muted);
-}
+    /* Partner strip (neutral, no logos) */
+    .partners{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap:10px;
+    }
+    @media (max-width:980px){ .partners{grid-template-columns:repeat(3,1fr)} }
+    @media (max-width:560px){ .partners{grid-template-columns:repeat(2,1fr)} }
+    .partner{
+      border:1px dashed #d9dfec;
+      border-radius:14px;
+      padding:12px;
+      text-align:center;
+      color:var(--muted);
+      font-weight:900;
+      font-size:12px;
+      background:#fff;
+    }
 
-/* ===== FORM ===== */
-.card{
-  border:1px solid var(--border);
-  border-radius:18px;
-  background:#fff;
-  padding:18px;
-}
-.card h3{
-  margin:0 0 6px;
-  font-size:16px;
-}
-.card p{
-  margin:0 0 14px;
-  font-size:13px;
-  color:var(--muted);
-}
+    /* Process */
+    .steps{display:grid; gap:12px; grid-template-columns: repeat(4, 1fr);}
+    @media (max-width:980px){ .steps{grid-template-columns:1fr} }
+    .step{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;
+      padding:14px;
+    }
+    .step b{display:block}
+    .step span{display:block; margin-top:6px; color:var(--muted); font-size:13px}
 
-label{
-  display:block;
-  margin:10px 0 6px;
-  font-size:12px;
-  font-weight:800;
-  color:var(--muted);
-}
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  font-size:14px;
-}
-textarea{min-height:90px}
-input:focus,select:focus,textarea:focus{
-  outline:none;
-  border-color:var(--blue);
-  box-shadow:0 0 0 4px rgba(36,54,214,.15);
-}
-.form-actions{
-  display:flex;
-  gap:12px;
-  margin-top:14px;
-  align-items:center;
-}
-.hint{
-  font-size:12px;
-  color:var(--muted);
-}
+    /* FAQ */
+    details{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:12px 14px;
+      background:#fff;
+      margin-bottom:10px;
+    }
+    summary{cursor:pointer; font-weight:900}
+    details p{margin:10px 0 0; color:var(--muted); font-size:13px}
 
-/* ===== SERVICES ===== */
-section{padding:24px 0}
-.section-title{
-  font-size:18px;
-  font-weight:900;
-  margin-bottom:14px;
-}
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-@media(max-width:900px){
-  .services{grid-template-columns:1fr}
-}
-.service{
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:16px;
-}
-.service h4{margin:0 0 6px}
-.service p{
-  margin:0;
-  font-size:13px;
-  color:var(--muted);
-}
-.service .badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  font-size:12px;
-  font-weight:800;
-}
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width:980px){ .contactGrid{grid-template-columns:1fr} }
 
-/* ===== FOOTER ===== */
-footer{
-  border-top:1px solid var(--border);
-  padding:20px 0 28px;
-  color:var(--muted);
-  font-size:13px;
-}
-.footer{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:12px;
-}
-</style>
+    label{display:block; margin:10px 0 6px; color:var(--muted); font-size:12px; font-weight:900}
+    input,select,textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-size:14px;
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:96px; resize:vertical}
+    input:focus,select:focus,textarea:focus{
+      border-color: rgba(31,59,214,.35);
+      box-shadow: 0 0 0 4px rgba(31,59,214,.14);
+    }
+
+    .formActions{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:14px;
+    }
+    .note{font-size:12px; color:var(--muted)}
+    #result{margin-top:10px}
+
+    footer{
+      border-top:1px solid var(--border);
+      margin-top:10px;
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot{
+      display:flex; justify-content:space-between;
+      flex-wrap:wrap; gap:12px;
+    }
+    .small{font-size:12px;color:var(--muted)}
+  </style>
 </head>
 
 <body>
-
 <header>
-  <div class="container nav">
-    <a class="brand" href="#">
-      <img src="arxa_fonsuz.png" alt="Global Professional Group">
-      <span>GLOBAL GROUP</span>
-    </a>
-    <nav class="menu">
-      <a href="#services">Услуги</a>
-      <a href="#how">Как работаем</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn" href="#contact">Контакты</a>
-      <a class="btn primary" href="#form">Рассчитать</a>
-    </nav>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="#top" aria-label="Global Professional Group">
+        <img src="arxa_fonsuz.png" alt="Global Professional Group">
+        <span class="t">GLOBAL GROUP</span>
+      </a>
+
+      <nav>
+        <a class="hide" href="#about">О компании</a>
+        <a class="hide" href="#services">Продукты</a>
+        <a class="hide" href="#corporate">Корпоративным</a>
+        <a class="hide" href="#claims">Убытки</a>
+        <a class="hide" href="#docs">Документы</a>
+        <a class="hide" href="#faq">FAQ</a>
+        <a class="btn ghost" href="#contact">Контакты</a>
+        <a class="btn primary" href="#contact">Получить консультацию</a>
+      </nav>
+    </div>
   </div>
 </header>
 
-<main class="hero">
-  <div class="container">
-    <div class="hero-box">
-      <div class="hero-grid">
-        <div>
-          <h1>Страхование без нервов.<br>Скорость — наша религия.</h1>
-          <p class="subtitle">
-            Global Professional Group — лицензированный страховой брокер.
-            Быстрый расчёт, прозрачные условия, сопровождение клиента и помощь при страховом случае.
+<main id="top" class="anchor">
+  <section class="hero">
+    <div class="wrap">
+      <div class="heroBox">
+        <div class="heroGrid">
+          <div>
+            <h1>Страховое агентство.<br>Подбор, оформление, сопровождение.</h1>
+            <p class="lead">
+              Global Professional Group помогает выбрать страховую программу под задачу:
+              авто, имущество, путешествия, бизнес. Объясняем условия, подбираем варианты,
+              сопровождаем клиента при страховом случае.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn primary" href="#contact">Запросить консультацию</a>
+              <a class="btn" href="#services">Смотреть продукты</a>
+              <a class="btn ghost" id="waTop" href="#">Написать в WhatsApp</a>
+            </div>
+
+            <div class="trustRow">
+              <span class="pill">Официальное оформление</span>
+              <span class="pill">Сравнение условий</span>
+              <span class="pill">Поддержка при убытке</span>
+              <span class="pill">Понятные объяснения</span>
+            </div>
+          </div>
+
+          <aside class="side">
+            <h3>Что вы получаете</h3>
+            <p>Это не “форма ради формы”. Это сервис агентства.</p>
+            <div class="miniGrid">
+              <div class="miniItem">
+                <b>Сравнение вариантов</b>
+                <span>покрытие, исключения, франшиза — простыми словами</span>
+              </div>
+              <div class="miniItem">
+                <b>Документы и оплата</b>
+                <span>помогаем подготовить всё без лишних шагов</span>
+              </div>
+              <div class="miniItem">
+                <b>Сопровождение убытка</b>
+                <span>подскажем порядок действий и пакет документов</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="anchor">
+    <div class="wrap">
+      <h2 class="title">О компании</h2>
+      <div class="grid3">
+        <div class="card">
+          <h4>Кто мы</h4>
+          <p>Страховое агентство / брокерские услуги. Подбор программ, оформление полисов, консультации.</p>
+          <span class="tag">Профессиональный подход</span>
+        </div>
+        <div class="card">
+          <h4>Как работаем</h4>
+          <p>Сначала уточняем задачу, потом сравниваем условия, после — оформляем и сопровождаем.</p>
+          <span class="tag">Понятная схема</span>
+        </div>
+        <div class="card">
+          <h4>Почему с нами</h4>
+          <p>Мы объясняем “что реально покрывается”, а не просто продаём полис.</p>
+          <span class="tag">Без сюрпризов</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="anchor">
+    <div class="wrap">
+      <h2 class="title">Партнёры</h2>
+      <div class="partners">
+        <div class="partner">Страховая №1</div>
+        <div class="partner">Страховая №2</div>
+        <div class="partner">Страховая №3</div>
+        <div class="partner">Страховая №4</div>
+        <div class="partner">Страховая №5</div>
+        <div class="partner">Страховая №6</div>
+      </div>
+      <p class="small" style="margin:10px 0 0">
+        Здесь можно заменить “Страховая №…” на реальные названия партнёров (без логотипов, если нет разрешения).
+      </p>
+    </div>
+  </section>
+
+  <section id="services" class="anchor">
+    <div class="wrap">
+      <h2 class="title">Продукты</h2>
+      <div class="grid3">
+        <div class="card">
+          <h4>КАСКО</h4>
+          <p>Подбор условий: ремонт, франшиза, стекла, угон, стихийные риски (по условиям полиса).</p>
+          <span class="tag">Для авто</span>
+        </div>
+        <div class="card">
+          <h4>ОСАГО</h4>
+          <p>Оформление и проверка данных. Объясним покрытие и ограничения.</p>
+          <span class="tag">Обязательное</span>
+        </div>
+        <div class="card">
+          <h4>Имущество</h4>
+          <p>Дом/квартира: пожар, затопление, кража — подбираем по рискам и бюджету.</p>
+          <span class="tag">Недвижимость</span>
+        </div>
+        <div class="card">
+          <h4>Путешествия</h4>
+          <p>Медицина, багаж, опции — под страну и срок поездки.</p>
+          <span class="tag">Travel</span>
+        </div>
+        <div class="card">
+          <h4>Ответственность</h4>
+          <p>Подберём решения для частных лиц и бизнеса (в зависимости от задач).</p>
+          <span class="tag">Liability</span>
+        </div>
+        <div class="card">
+          <h4>Консультации</h4>
+          <p>Разбор условий действующего полиса и рекомендация следующего шага.</p>
+          <span class="tag">Экспертиза</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="corporate" class="anchor">
+    <div class="wrap">
+      <h2 class="title">Корпоративным клиентам</h2>
+      <div class="grid3">
+        <div class="card">
+          <h4>Автопарк</h4>
+          <p>Подбор условий для автопарка: лимиты, допущенные водители, рассрочка (если доступно).</p>
+        </div>
+        <div class="card">
+          <h4>Имущество бизнеса</h4>
+          <p>Офис/склад/оборудование — покрытие по рискам, требования к объекту, документы.</p>
+        </div>
+        <div class="card">
+          <h4>Ответственность</h4>
+          <p>Решения по ответственности в зависимости от сферы деятельности.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="claims" class="anchor">
+    <div class="wrap">
+      <h2 class="title">Если случился страховой случай</h2>
+      <div class="steps">
+        <div class="step">
+          <b>1) Зафиксируйте</b>
+          <span>Сфото, вызовите нужные службы (если требуется), сохраните документы.</span>
+        </div>
+        <div class="step">
+          <b>2) Сообщите</b>
+          <span>Напишите нам — подскажем порядок действий и что подготовить.</span>
+        </div>
+        <div class="step">
+          <b>3) Подайте заявление</b>
+          <span>Поможем собрать пакет документов и избежать типовых ошибок.</span>
+        </div>
+        <div class="step">
+          <b>4) Сопровождение</b>
+          <span>Контроль этапов до решения страховой (в рамках возможностей агента).</span>
+        </div>
+      </div>
+      <p class="small" style="margin:10px 0 0">
+        Важно: конкретные действия зависят от условий полиса и требований страховой компании.
+      </p>
+    </div>
+  </section>
+
+  <section id="docs" class="anchor">
+    <div class="wrap">
+      <h2 class="title">Документы и информация</h2>
+      <div class="grid3">
+        <div class="card">
+          <h4>Реквизиты</h4>
+          <p>Добавьте юридическое название, VÖEN, адрес, часы работы.</p>
+          <span class="tag">Обязательно</span>
+        </div>
+        <div class="card">
+          <h4>Политика конфиденциальности</h4>
+          <p>Короткая политика обработки обращений (телефон/WhatsApp/почта).</p>
+          <span class="tag">GDPR-лайт</span>
+        </div>
+        <div class="card">
+          <h4>Публичная оферта</h4>
+          <p>Опционально: если будете принимать оплату онлайн.</p>
+          <span class="tag">Опционально</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="anchor">
+    <div class="wrap">
+      <h2 class="title">FAQ</h2>
+      <details>
+        <summary>Вы продаёте или подбираете?</summary>
+        <p>Мы подбираем вариант под задачу и объясняем условия. Оформление — по правилам выбранной страховой компании.</p>
+      </details>
+      <details>
+        <summary>Сколько занимает расчёт?</summary>
+        <p>Зависит от продукта и вводных. Если данные полные — быстрее. Срок скажем после обращения.</p>
+      </details>
+      <details>
+        <summary>Можете помочь при убытке?</summary>
+        <p>Да, подскажем порядок действий и пакет документов. Решение по выплате принимает страховая компания.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" class="anchor">
+    <div class="wrap">
+      <h2 class="title">Контакты и заявка</h2>
+
+      <div class="contactGrid">
+        <div class="card">
+          <h4 style="margin:0 0 8px">Контакты</h4>
+          <p style="margin:0 0 12px">Укажите реальные контакты — и клиенты смогут писать сразу.</p>
+
+          <div class="trustRow" style="margin:0">
+            <span class="pill" id="contactPhone">WhatsApp: +994 XX XXX XX XX</span>
+            <span class="pill" id="contactEmail">Email: hello@globalgroup.az</span>
+            <span class="pill">Город: Baku</span>
+          </div>
+
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn primary" id="waBtn" href="#">Написать в WhatsApp</a>
+            <a class="btn" id="mailBtn" href="#">Написать на email</a>
+          </div>
+
+          <p class="small" style="margin:12px 0 0">
+            Нажимая кнопки связи, вы соглашаетесь на обратную связь.
           </p>
-
-          <div class="actions">
-            <a href="#form" class="btn primary">Получить расчёт</a>
-            <a href="#services" class="btn">Смотреть услуги</a>
-          </div>
-
-          <div class="tags">
-            <span class="tag">Официальные сервисы</span>
-            <span class="tag">Прозрачные условия</span>
-            <span class="tag">Помощь при страховом случае</span>
-          </div>
-
-          <div class="kpis">
-            <div class="kpi">
-              <b>Быстро</b>
-              <span>обычно 1–2 часа на расчёт</span>
-            </div>
-            <div class="kpi">
-              <b>Честно</b>
-              <span>без мелкого шрифта</span>
-            </div>
-            <div class="kpi">
-              <b>Под ключ</b>
-              <span>от заявки до консультации по убытку</span>
-            </div>
-          </div>
         </div>
 
-        <div class="card" id="form">
-          <h3>Заявка на расчёт</h3>
-          <p>Заполните 30 секунд — мы свяжемся и уточним детали.</p>
+        <div class="card">
+          <h4 style="margin:0 0 8px">Заявка</h4>
+          <p style="margin:0 0 12px">Опишите задачу — мы уточним детали и предложим варианты.</p>
 
           <form id="leadForm">
-            <label>Имя</label>
-            <input required placeholder="Например: Вугар">
+            <label for="name">Имя</label>
+            <input id="name" name="name" placeholder="Например: Вугар" required>
 
-            <label>Телефон / WhatsApp</label>
-            <input required placeholder="+994 XX XXX XX XX">
+            <label for="phone">Телефон / WhatsApp</label>
+            <input id="phone" name="phone" placeholder="+994 XX XXX XX XX" required>
 
-            <label>Что нужно?</label>
-            <select required>
-              <option value="">Выберите</option>
+            <label for="type">Продукт</label>
+            <select id="type" name="type" required>
+              <option value="" disabled selected>Выберите</option>
               <option>КАСКО</option>
               <option>ОСАГО</option>
               <option>Имущество</option>
               <option>Путешествия</option>
+              <option>Корпоративное</option>
+              <option>Другое</option>
             </select>
 
-            <label>Коротко о задаче</label>
-            <textarea placeholder="Марка, модель, год, стоимость и т.п."></textarea>
+            <label for="details">Детали</label>
+            <textarea id="details" name="details" placeholder="Марка/модель, год, стоимость, франшиза и т.п."></textarea>
 
-            <div class="form-actions">
-              <button class="btn primary" type="submit">Отправить</button>
-              <span class="hint">Мы свяжемся с вами</span>
+            <div class="formActions">
+              <button class="btn primary" type="submit">Отправить в WhatsApp</button>
+              <span class="note">Если WhatsApp не откроется — будет ссылка на email.</span>
             </div>
+
+            <div id="result" class="note"></div>
           </form>
         </div>
-
       </div>
     </div>
-  </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>© <span id="y"></span> Global Professional Group</div>
+        <div class="small">Страховое агентство • Подбор • Оформление • Сопровождение</div>
+      </div>
+    </div>
+  </footer>
 </main>
 
-<section id="services">
-  <div class="container">
-    <h2 class="section-title">Услуги</h2>
-    <div class="services">
-      <div class="service">
-        <h4>КАСКО</h4>
-        <p>Защита авто от ДТП, угона, стихий и других рисков.</p>
-        <span class="badge">Для авто</span>
-      </div>
-      <div class="service">
-        <h4>ОСАГО</h4>
-        <p>Обязательное страхование с понятными условиями.</p>
-        <span class="badge">База</span>
-      </div>
-      <div class="service">
-        <h4>Имущество</h4>
-        <p>Дом и квартира: пожар, затопление, кража.</p>
-        <span class="badge">Недвижимость</span>
-      </div>
-    </div>
-  </div>
-</section>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-<footer>
-  <div class="container footer">
-    <div>© 2026 Global Professional Group</div>
-    <div>Страховой брокер</div>
-  </div>
-</footer>
+  // === SET YOUR REAL CONTACTS HERE ===
+  // Digits only, without +
+  const whatsappNumber = "994XXXXXXXXX"; // <-- ЗАМЕНИ на свой номер, например 994501234567
+  const email = "hello@globalgroup.az";  // <-- ЗАМЕНИ на свой email
 
+  const waBase = `https://wa.me/${whatsappNumber}`;
+  const mailBase = `mailto:${encodeURIComponent(email)}`;
+
+  // update visible contact pills
+  const contactPhone = document.getElementById('contactPhone');
+  const contactEmail = document.getElementById('contactEmail');
+  if (contactPhone) contactPhone.textContent = `WhatsApp: +${whatsappNumber}`;
+  if (contactEmail) contactEmail.textContent = `Email: ${email}`;
+
+  // buttons
+  const waBtn = document.getElementById('waBtn');
+  const waTop = document.getElementById('waTop');
+  const mailBtn = document.getElementById('mailBtn');
+
+  function openWA(text){
+    const url = `${waBase}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  }
+  function openMail(subject, body){
+    const url = `${mailBase}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(url, "_blank");
+  }
+
+  if (waBtn) waBtn.addEventListener('click', (e)=>{ e.preventDefault(); openWA("Здравствуйте! Нужна консультация по страхованию."); });
+  if (waTop) waTop.addEventListener('click', (e)=>{ e.preventDefault(); openWA("Здравствуйте! Нужна консультация по страхованию."); });
+  if (mailBtn) mailBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    openMail("Консультация", "Здравствуйте! Нужна консультация по страхованию.\n\nКонтакты:\n");
+  });
+
+  // form -> WhatsApp
+  const form = document.getElementById('leadForm');
+  const result = document.getElementById('result');
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const name = (data.get('name')||'').toString().trim();
+    const phone = (data.get('phone')||'').toString().trim();
+    const type = (data.get('type')||'').toString().trim();
+    const details = (data.get('details')||'').toString().trim();
+
+    const msg =
+`Заявка с сайта Global Professional Group
+Имя: ${name}
+Телефон: ${phone}
+Продукт: ${type}
+Детали: ${details || '-'}`;
+
+    const mailFallback = `${mailBase}?subject=${encodeURIComponent("Заявка: "+type)}&body=${encodeURIComponent(msg)}`;
+
+    result.innerHTML = `Открываю WhatsApp…<br>Если WhatsApp не открылся — отправьте на email: <a href="${mailFallback}">${email}</a>`;
+
+    openWA(msg);
+    form.reset();
+  });
+</script>
 </body>
 </html>
