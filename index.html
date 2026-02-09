@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Global Group — Страхование и сервис</title>
+  <meta name="description" content="Global Group: КАСКО, ОСАГО, имущество, путешествия. Быстрые расчёты и поддержка." />
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --card:#10182a;
+      --text:#e9eefc;
+      --muted:#b7c3e6;
+      --line:rgba(255,255,255,.12);
+      --accent:#22d3ee;
+      --accent2:#a78bfa;
+      --ok:#34d399;
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1000px 600px at 20% 10%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(900px 700px at 80% 0%, rgba(167,139,250,.18), transparent 55%),
+        radial-gradient(900px 700px at 60% 90%, rgba(52,211,153,.12), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(12px);
+      background: rgba(11,15,26,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(34,211,238,.9), rgba(34,211,238,.0) 60%),
+        radial-gradient(circle at 70% 70%, rgba(167,139,250,.9), rgba(167,139,250,.0) 60%),
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .menu{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .menu a{color:var(--muted); font-weight:600; font-size:14px}
+    .menu a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:700;
+      gap:10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#061018;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .hero{
+      padding:64px 0 28px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .grid{grid-template-columns:1fr}
+      .menu .hide-sm{display:none}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card{padding:26px}
+    h1{
+      margin:0 0 12px;
+      font-size:42px;
+      line-height:1.1;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 60ch;
+    }
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin: 12px 0 0}
+    .badge{
+      font-size:13px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color:var(--muted);
+    }
+    .row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .row .btn{flex:0 0 auto}
+    .mini{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    @media (max-width: 620px){
+      h1{font-size:34px}
+      .mini{grid-template-columns:1fr}
+    }
+    .mini .tile{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+    }
+    .k{font-weight:800}
+    .v{color:var(--muted); font-size:13px}
+    .form-card{padding:22px}
+    .form-title{font-size:18px;font-weight:800;margin:0 0 6px}
+    .form-sub{margin:0 0 16px; color:var(--muted); font-size:13px}
+    label{display:block; font-size:12px; color:var(--muted); margin:10px 0 6px}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:88px; resize:vertical}
+    input:focus, select:focus, textarea:focus{border-color: rgba(34,211,238,.6)}
+    .form-actions{display:flex; gap:10px; align-items:center; margin-top:14px; flex-wrap:wrap}
+    .hint{font-size:12px; color:var(--muted)}
+    section{padding:28px 0}
+    .section-title{
+      font-size:18px;
+      font-weight:900;
+      margin:0 0 12px;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 920px){ .cards{grid-template-columns:1fr} }
+    .service{padding:16px}
+    .service h3{margin:0 0 6px; font-size:16px}
+    .service p{margin:0; color:var(--muted); font-size:13px}
+    .service .tag{
+      display:inline-flex; margin-top:10px;
+      font-size:12px; font-weight:700;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+    }
+    .split{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 920px){ .split{grid-template-columns:1fr} }
+    .faq{padding:16px}
+    details{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius:16px;
+      padding:12px 12px;
+      margin-bottom:10px;
+    }
+    summary{cursor:pointer; font-weight:800}
+    details p{color:var(--muted); margin:10px 0 0; font-size:13px}
+    footer{
+      padding:26px 0 40px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:22px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap
+    }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      border:1px solid var(--line); border-radius:999px;
+      padding:8px 10px; background: rgba(255,255,255,.04);
+      font-size:13px;
+    }
+    .dot{width:10px;height:10px;border-radius:50%; background: var(--ok); box-shadow:0 0 12px rgba(52,211,153,.5)}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Global Group">
+          <div class="logo" aria-hidden="true"></div>
+          <div>GLOBAL GROUP</div>
+        </a>
+        <nav class="menu" aria-label="Навигация">
+          <a class="hide-sm" href="#services">Услуги</a>
+          <a class="hide-sm" href="#how">Как работаем</a>
+          <a class="hide-sm" href="#faq">FAQ</a>
+          <a class="btn" href="#contact">Контакты</a>
+          <a class="btn primary" href="#quote">Рассчитать</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="grid">
+          <div class="card hero-card">
+            <h1>Страхование без нервов.<br/>Скорость — наша религия.</h1>
+            <p class="sub">
+              Global Group помогает оформить КАСКО, ОСАГО, имущество и путешествия.
+              Быстрый расчёт, прозрачные условия, поддержка до и после страхового случая.
+            </p>
+            <div class="row">
+              <a class="btn primary" href="#quote">Получить расчёт</a>
+              <a class="btn" href="#services">Смотреть услуги</a>
+            </div>
+            <div class="badges" aria-label="Преимущества">
+              <span class="badge">Официальные сервисы</span>
+              <span class="badge">Рассрочка/оплата частями (если доступно)</span>
+              <span class="badge">Помощь при страховом случае</span>
+              <span class="badge">Подбор под бюджет</span>
+            </div>
+
+            <div class="mini" aria-label="Короткие факты">
+              <div class="tile">
+                <div class="k">1–2 часа</div>
+                <div class="v">обычно хватает на расчёт и вариант(ы)</div>
+              </div>
+              <div class="tile">
+                <div class="k">Честно</div>
+                <div class="v">без “мелкого шрифта” в разговоре</div>
+              </div>
+              <div class="tile">
+                <div class="k">Под ключ</div>
+                <div class="v">от заявки до консультации по убытку</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card form-card" id="quote">
+            <p class="form-title">Заявка на расчёт</p>
+            <p class="form-sub">Заполните 30 секунд — мы свяжемся и уточним детали.</p>
+
+            <form id="leadForm">
+              <label for="name">Имя</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Например: Вугар" required />
+
+              <label for="phone">Телефон / WhatsApp</label>
+              <input id="phone" name="phone" inputmode="tel" placeholder="+994 XX XXX XX XX" required />
+
+              <label for="type">Что нужно?</label>
+              <select id="type" name="type" required>
+                <option value="" disabled selected>Выберите</option>
+                <option>КАСКО</option>
+                <option>ОСАГО</option>
+                <option>Имущество (дом/квартира)</option>
+                <option>Путешествия</option>
+                <option>Другое</option>
+              </select>
+
+              <label for="details">Коротко о задаче</label>
+              <textarea id="details" name="details" placeholder="Марка/модель авто, год, стоимость, франшиза и т.п."></textarea>
+
+              <div class="form-actions">
+                <button class="btn primary" type="submit">Отправить</button>
+                <span class="hint" id="formHint">Нажимая «Отправить», вы подтверждаете согласие на связь.</span>
+              </div>
+
+              <p class="hint" id="result" role="status" aria-live="polite" style="margin-top:12px;"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <h2 class="section-title">Услуги</h2>
+        <div class="cards">
+          <div class="card service">
+            <h3>КАСКО</h3>
+            <p>Защита авто от ДТП, угона, стихий, стекол и прочего (по условиям полиса).</p>
+            <span class="tag">Для тех, кто бережёт машину</span>
+          </div>
+          <div class="card service">
+            <h3>ОСАГО</h3>
+            <p>Быстро оформим и объясним, что покрывается, а что — нет.</p>
+            <span class="tag">База для каждого водителя</span>
+          </div>
+          <div class="card service">
+            <h3>Имущество</h3>
+            <p>Дом/квартира: пожар, затопление, кража — подбираем защиту по рискам.</p>
+            <span class="tag">Спокойствие дома</span>
+          </div>
+          <div class="card service">
+            <h3>Путешествия</h3>
+            <p>Медицинские риски, багаж и прочие опции — под страну и длительность.</p>
+            <span class="tag">Чтобы отпуск не стал квестом</span>
+          </div>
+          <div class="card service">
+            <h3>Корпоративные решения</h3>
+            <p>Парк авто, имущество, ответственность — системно и по договору.</p>
+            <span class="tag">Для бизнеса</span>
+          </div>
+          <div class="card service">
+            <h3>Сопровождение убытка</h3>
+            <p>Поможем пройти процесс: документы, коммуникация, сервис, сроки.</p>
+            <span class="tag">Не остаётесь один</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2 class="section-title">Как работаем</h2>
+        <div class="split">
+          <div class="card service">
+            <h3>1) Вы даёте вводные</h3>
+            <p>Короткая заявка или звонок: тип страхования, параметры, пожелания по бюджету.</p>
+            <span class="tag">30–60 секунд</span>
+          </div>
+          <div class="card service">
+            <h3>2) Мы подбираем варианты</h3>
+            <p>Сравниваем условия, объясняем разницу простыми словами, без магии.</p>
+            <span class="tag">Прозрачно</span>
+          </div>
+          <div class="card service">
+            <h3>3) Оформление</h3>
+            <p>Проверка данных, документы, оплата — и вы получаете полис.</p>
+            <span class="tag">Под ключ</span>
+          </div>
+          <div class="card service">
+            <h3>4) Поддержка</h3>
+            <p>Если случилось неприятное — поможем пройти шаги и не потерять время.</p>
+            <span class="tag">С вами</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <h2 class="section-title">FAQ</h2>
+        <div class="card faq">
+          <details>
+            <summary>Сколько занимает расчёт?</summary>
+            <p>Зависит от продукта и вводных. Если данные полные — обычно быстрее. Мы скажем срок сразу после заявки.</p>
+          </details>
+          <details>
+            <summary>Можно ли подобрать полис под бюджет?</summary>
+            <p>Да. Чаще всего можно играть покрытием, франшизой и опциями — важно честно понимать компромиссы.</p>
+          </details>
+          <details>
+            <summary>Вы помогаете при страховом случае?</summary>
+            <p>Да, подскажем порядок действий, какие документы собрать и как быстрее пройти процесс.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="card service" style="padding:18px">
+          <h2 class="section-title" style="margin:0 0 10px">Контакты</h2>
+          <p style="margin:0; color:var(--muted); font-size:13px">
+            Добавьте сюда телефон, WhatsApp, адрес офиса, часы работы и ссылки на соцсети.
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+            <span class="pill"><span class="dot"></span> Работаем: Пн–Сб</span>
+            <span class="pill">WhatsApp: +994 XX XXX XX XX</span>
+            <span class="pill">Email: hello@globalgroup.az</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>© <span id="y"></span> Global Group. Все права защищены.</div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap">
+            <a href="#top">Наверх</a>
+            <a href="#quote">Заявка</a>
+            <a href="#services">Услуги</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Год в футере
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Локальная отправка (без сервера): собираем текст и открываем WhatsApp/почту, чтобы не терять заявки.
+    const form = document.getElementById('leadForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const name = (data.get('name') || '').toString().trim();
+      const phone = (data.get('phone') || '').toString().trim();
+      const type = (data.get('type') || '').toString().trim();
+      const details = (data.get('details') || '').toString().trim();
+
+      const msg =
+`Заявка с сайта Global Group
+Имя: ${name}
+Телефон: ${phone}
+Запрос: ${type}
+Детали: ${details || '-'}`;
+
+      // Вариант 1: открыть WhatsApp (замени номер на свой, только цифры без +)
+      const whatsappNumber = "994XXXXXXXXX"; // <-- замените
+      const wa = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+
+      // Вариант 2: mailto (на случай, если WhatsApp не настроен)
+      const email = "hello@globalgroup.az"; // <-- замените
+      const mail = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent("Заявка: " + type)}&body=${encodeURIComponent(msg)}`;
+
+      // Пытаемся открыть WhatsApp, если не получилось — пользователь может нажать на mailto ниже
+      result.innerHTML = `Готово. Сейчас откроется WhatsApp для отправки заявки.<br>
+      Если WhatsApp не открылся — отправьте на email: <a href="${mail}">${email}</a>`;
+
+      window.open(wa, '_blank');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
