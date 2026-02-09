@@ -3,216 +3,274 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Global Group — Страхование и сервис</title>
-  <meta name="description" content="Global Group: КАСКО, ОСАГО, имущество, путешествия. Быстрые расчёты и поддержка." />
+  <title>Global Professional Group — Страхование</title>
+  <meta name="description" content="Global Professional Group: КАСКО, ОСАГО, имущество, путешествия. Быстрый расчёт и поддержка." />
+
+  <!-- Corporate font (legal & common) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#0b0f1a;
-      --card:#10182a;
-      --text:#e9eefc;
-      --muted:#b7c3e6;
-      --line:rgba(255,255,255,.12);
-      --accent:#22d3ee;
-      --accent2:#a78bfa;
-      --ok:#34d399;
-      --shadow: 0 20px 50px rgba(0,0,0,.35);
-      --radius:18px;
+      /* Light corporate palette (NOT copying any specific brand codes) */
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e5e7eb;
+
+      --accent:#1e40af;      /* deep blue */
+      --accentSoft:#3b82f6;  /* lighter blue */
+      --ok:#16a34a;
+
+      --radius:14px;
+      --shadow:0 8px 24px rgba(15,23,42,.06);
       --max:1100px;
     }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(1000px 600px at 20% 10%, rgba(34,211,238,.18), transparent 55%),
-        radial-gradient(900px 700px at 80% 0%, rgba(167,139,250,.18), transparent 55%),
-        radial-gradient(900px 700px at 60% 90%, rgba(52,211,153,.12), transparent 55%),
-        var(--bg);
-      color:var(--text);
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height:1.5;
     }
+
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* Top bar */
     header{
       position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(12px);
-      background: rgba(11,15,26,.55);
-      border-bottom:1px solid var(--line);
+      background: rgba(246,248,251,.85);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
+      padding:12px 0;
       gap:14px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:.2px;
       white-space:nowrap;
     }
-    .logo{
-      width:38px;height:38px;border-radius:12px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(34,211,238,.9), rgba(34,211,238,.0) 60%),
-        radial-gradient(circle at 70% 70%, rgba(167,139,250,.9), rgba(167,139,250,.0) 60%),
-        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
+
+    /* LOGO: no transforms/filters. Keep original proportions. */
+    .brand img{
+      height:44px;
+      width:auto;
+      display:block;
     }
-    .menu{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .menu a{color:var(--muted); font-weight:600; font-size:14px}
-    .menu a:hover{color:var(--text)}
+
+    .menu{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .menu a{
+      color:var(--muted);
+      font-weight:700;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:10px;
+    }
+    .menu a:hover{background:#eef2ff;color:var(--text)}
+    .menu .hide-sm{}
+    @media (max-width: 920px){
+      .menu .hide-sm{display:none}
+    }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:11px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
+      border-radius:10px;
+      border:1px solid var(--border);
+      background: #ffffff;
       color:var(--text);
-      font-weight:700;
+      font-weight:800;
       gap:10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      cursor:pointer;
+      box-shadow: 0 2px 10px rgba(15,23,42,.04);
     }
+    .btn:hover{border-color:#cbd5e1}
     .btn.primary{
-      border:none;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:#061018;
+      background: var(--accent);
+      color:#ffffff;
+      border: none;
+      box-shadow: 0 10px 24px rgba(30,64,175,.18);
     }
-    .btn:hover{transform: translateY(-1px)}
-    .hero{
-      padding:64px 0 28px;
+    .btn.primary:hover{background: var(--accentSoft)}
+
+    /* Hero */
+    .hero{padding:34px 0 18px}
+    .heroShell{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 22px;
     }
     .grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 920px){
-      .grid{grid-template-columns:1fr}
-      .menu .hide-sm{display:none}
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-card{padding:26px}
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+
     h1{
-      margin:0 0 12px;
-      font-size:42px;
+      margin:0 0 10px;
+      font-size:40px;
       line-height:1.1;
-      letter-spacing:-.8px;
+      letter-spacing:-.6px;
     }
+    @media (max-width:620px){ h1{font-size:32px} }
+
     .sub{
-      margin:0 0 18px;
+      margin:0 0 16px;
       color:var(--muted);
-      font-size:16px;
-      max-width: 60ch;
+      font-size:15px;
+      max-width: 65ch;
     }
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin: 12px 0 0}
+
+    .badges{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
+    }
     .badge{
       font-size:13px;
       padding:8px 10px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#ffffff;
       color:var(--muted);
+      font-weight:700;
     }
-    .row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-    .row .btn{flex:0 0 auto}
+
+    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+
     .mini{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
       gap:12px;
-      margin-top:18px;
+      margin-top:16px;
     }
-    @media (max-width: 620px){
-      h1{font-size:34px}
-      .mini{grid-template-columns:1fr}
-    }
-    .mini .tile{
+    @media (max-width: 620px){ .mini{grid-template-columns:1fr} }
+    .tile{
       padding:14px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#ffffff;
     }
-    .k{font-weight:800}
-    .v{color:var(--muted); font-size:13px}
-    .form-card{padding:22px}
-    .form-title{font-size:18px;font-weight:800;margin:0 0 6px}
-    .form-sub{margin:0 0 16px; color:var(--muted); font-size:13px}
-    label{display:block; font-size:12px; color:var(--muted); margin:10px 0 6px}
+    .k{font-weight:900}
+    .v{color:var(--muted); font-size:13px; margin-top:2px}
+
+    /* Cards */
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    /* Form */
+    .form-card{padding:18px}
+    .form-title{font-size:18px;font-weight:900;margin:0 0 6px}
+    .form-sub{margin:0 0 14px; color:var(--muted); font-size:13px}
+
+    label{display:block; font-size:12px; color:var(--muted); margin:10px 0 6px; font-weight:700}
     input, select, textarea{
       width:100%;
       padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.25);
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: #ffffff;
       color:var(--text);
       outline:none;
+      font-size:14px;
     }
-    textarea{min-height:88px; resize:vertical}
-    input:focus, select:focus, textarea:focus{border-color: rgba(34,211,238,.6)}
+    textarea{min-height:86px; resize:vertical}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(30,64,175,.45);
+      box-shadow: 0 0 0 4px rgba(59,130,246,.12);
+    }
+
     .form-actions{display:flex; gap:10px; align-items:center; margin-top:14px; flex-wrap:wrap}
     .hint{font-size:12px; color:var(--muted)}
-    section{padding:28px 0}
+    #result{margin-top:10px}
+
+    /* Sections */
+    section{padding:22px 0}
     .section-title{
       font-size:18px;
       font-weight:900;
       margin:0 0 12px;
     }
+
     .cards{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
     @media (max-width: 920px){ .cards{grid-template-columns:1fr} }
+
     .service{padding:16px}
     .service h3{margin:0 0 6px; font-size:16px}
     .service p{margin:0; color:var(--muted); font-size:13px}
     .service .tag{
       display:inline-flex; margin-top:10px;
-      font-size:12px; font-weight:700;
+      font-size:12px; font-weight:800;
       padding:6px 9px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      background:#ffffff;
       color:var(--text);
     }
+
     .split{
       display:grid; gap:14px;
       grid-template-columns: 1fr 1fr;
     }
     @media (max-width: 920px){ .split{grid-template-columns:1fr} }
+
+    /* FAQ */
     .faq{padding:16px}
     details{
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      border-radius:16px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      border-radius:14px;
       padding:12px 12px;
       margin-bottom:10px;
     }
-    summary{cursor:pointer; font-weight:800}
+    summary{cursor:pointer; font-weight:900}
     details p{color:var(--muted); margin:10px 0 0; font-size:13px}
+
     footer{
-      padding:26px 0 40px;
+      padding:22px 0 32px;
       color:var(--muted);
-      border-top:1px solid var(--line);
-      margin-top:22px;
+      border-top:1px solid var(--border);
+      margin-top:10px;
     }
-    .foot{
-      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap
-    }
+    .foot{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap}
+
     .pill{
       display:inline-flex; gap:10px; align-items:center;
-      border:1px solid var(--line); border-radius:999px;
-      padding:8px 10px; background: rgba(255,255,255,.04);
+      border:1px solid var(--border); border-radius:999px;
+      padding:8px 10px; background:#ffffff;
       font-size:13px;
+      color:var(--muted);
+      font-weight:700;
     }
-    .dot{width:10px;height:10px;border-radius:50%; background: var(--ok); box-shadow:0 0 12px rgba(52,211,153,.5)}
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 10px rgba(22,163,74,.25);
+    }
+
+    /* Small helper for anchor offset */
+    .anchor{scroll-margin-top: 90px;}
   </style>
 </head>
 
@@ -220,10 +278,12 @@
   <header>
     <div class="wrap">
       <div class="nav">
-        <a class="brand" href="#top" aria-label="Global Group">
-          <div class="logo" aria-hidden="true"></div>
+        <a class="brand" href="#top" aria-label="Global Professional Group">
+          <!-- Logo: keep original file, no editing -->
+          <img src="arxa_fonsuz.png" alt="Global Professional Group" />
           <div>GLOBAL GROUP</div>
         </a>
+
         <nav class="menu" aria-label="Навигация">
           <a class="hide-sm" href="#services">Услуги</a>
           <a class="hide-sm" href="#how">Как работаем</a>
@@ -235,80 +295,84 @@
     </div>
   </header>
 
-  <main id="top">
+  <main id="top" class="anchor">
     <section class="hero">
       <div class="wrap">
-        <div class="grid">
-          <div class="card hero-card">
-            <h1>Страхование без нервов.<br/>Скорость — наша религия.</h1>
-            <p class="sub">
-              Global Group помогает оформить КАСКО, ОСАГО, имущество и путешествия.
-              Быстрый расчёт, прозрачные условия, поддержка до и после страхового случая.
-            </p>
-            <div class="row">
-              <a class="btn primary" href="#quote">Получить расчёт</a>
-              <a class="btn" href="#services">Смотреть услуги</a>
+        <div class="heroShell">
+          <div class="grid">
+            <div>
+              <h1>Страхование без нервов.<br/>Скорость — наша религия.</h1>
+              <p class="sub">
+                Global Professional Group помогает оформить КАСКО, ОСАГО, имущество и путешествия.
+                Быстрый расчёт, понятные условия, поддержка до и после страхового случая.
+              </p>
+
+              <div class="row">
+                <a class="btn primary" href="#quote">Получить расчёт</a>
+                <a class="btn" href="#services">Смотреть услуги</a>
+              </div>
+
+              <div class="badges" aria-label="Преимущества">
+                <span class="badge">Официальные сервисы</span>
+                <span class="badge">Подбор под бюджет</span>
+                <span class="badge">Помощь при страховом случае</span>
+                <span class="badge">Прозрачные условия</span>
+              </div>
+
+              <div class="mini" aria-label="Короткие факты">
+                <div class="tile">
+                  <div class="k">Быстро</div>
+                  <div class="v">обычно достаточно 1–2 часов на расчёт</div>
+                </div>
+                <div class="tile">
+                  <div class="k">Честно</div>
+                  <div class="v">объясняем условия простыми словами</div>
+                </div>
+                <div class="tile">
+                  <div class="k">Под ключ</div>
+                  <div class="v">от заявки до консультации по убытку</div>
+                </div>
+              </div>
             </div>
-            <div class="badges" aria-label="Преимущества">
-              <span class="badge">Официальные сервисы</span>
-              <span class="badge">Рассрочка/оплата частями (если доступно)</span>
-              <span class="badge">Помощь при страховом случае</span>
-              <span class="badge">Подбор под бюджет</span>
+
+            <div class="card form-card anchor" id="quote">
+              <p class="form-title">Заявка на расчёт</p>
+              <p class="form-sub">Заполните 30 секунд — мы свяжемся и уточним детали.</p>
+
+              <form id="leadForm">
+                <label for="name">Имя</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Например: Вугар" required />
+
+                <label for="phone">Телефон / WhatsApp</label>
+                <input id="phone" name="phone" inputmode="tel" placeholder="+994 XX XXX XX XX" required />
+
+                <label for="type">Что нужно?</label>
+                <select id="type" name="type" required>
+                  <option value="" disabled selected>Выберите</option>
+                  <option>КАСКО</option>
+                  <option>ОСАГО</option>
+                  <option>Имущество (дом/квартира)</option>
+                  <option>Путешествия</option>
+                  <option>Другое</option>
+                </select>
+
+                <label for="details">Коротко о задаче</label>
+                <textarea id="details" name="details" placeholder="Марка/модель авто, год, стоимость, франшиза и т.п."></textarea>
+
+                <div class="form-actions">
+                  <button class="btn primary" type="submit">Отправить</button>
+                  <span class="hint">Нажимая «Отправить», вы подтверждаете согласие на связь.</span>
+                </div>
+
+                <p class="hint" id="result" role="status" aria-live="polite"></p>
+              </form>
             </div>
-
-            <div class="mini" aria-label="Короткие факты">
-              <div class="tile">
-                <div class="k">1–2 часа</div>
-                <div class="v">обычно хватает на расчёт и вариант(ы)</div>
-              </div>
-              <div class="tile">
-                <div class="k">Честно</div>
-                <div class="v">без “мелкого шрифта” в разговоре</div>
-              </div>
-              <div class="tile">
-                <div class="k">Под ключ</div>
-                <div class="v">от заявки до консультации по убытку</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card form-card" id="quote">
-            <p class="form-title">Заявка на расчёт</p>
-            <p class="form-sub">Заполните 30 секунд — мы свяжемся и уточним детали.</p>
-
-            <form id="leadForm">
-              <label for="name">Имя</label>
-              <input id="name" name="name" autocomplete="name" placeholder="Например: Вугар" required />
-
-              <label for="phone">Телефон / WhatsApp</label>
-              <input id="phone" name="phone" inputmode="tel" placeholder="+994 XX XXX XX XX" required />
-
-              <label for="type">Что нужно?</label>
-              <select id="type" name="type" required>
-                <option value="" disabled selected>Выберите</option>
-                <option>КАСКО</option>
-                <option>ОСАГО</option>
-                <option>Имущество (дом/квартира)</option>
-                <option>Путешествия</option>
-                <option>Другое</option>
-              </select>
-
-              <label for="details">Коротко о задаче</label>
-              <textarea id="details" name="details" placeholder="Марка/модель авто, год, стоимость, франшиза и т.п."></textarea>
-
-              <div class="form-actions">
-                <button class="btn primary" type="submit">Отправить</button>
-                <span class="hint" id="formHint">Нажимая «Отправить», вы подтверждаете согласие на связь.</span>
-              </div>
-
-              <p class="hint" id="result" role="status" aria-live="polite" style="margin-top:12px;"></p>
-            </form>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <section id="services" class="anchor">
       <div class="wrap">
         <h2 class="section-title">Услуги</h2>
         <div class="cards">
@@ -319,7 +383,7 @@
           </div>
           <div class="card service">
             <h3>ОСАГО</h3>
-            <p>Быстро оформим и объясним, что покрывается, а что — нет.</p>
+            <p>Оформим быстро и объясним, что покрывается, а что — нет.</p>
             <span class="tag">База для каждого водителя</span>
           </div>
           <div class="card service">
@@ -329,62 +393,62 @@
           </div>
           <div class="card service">
             <h3>Путешествия</h3>
-            <p>Медицинские риски, багаж и прочие опции — под страну и длительность.</p>
+            <p>Медицинские риски, багаж и опции — под страну и длительность поездки.</p>
             <span class="tag">Чтобы отпуск не стал квестом</span>
           </div>
           <div class="card service">
             <h3>Корпоративные решения</h3>
-            <p>Парк авто, имущество, ответственность — системно и по договору.</p>
+            <p>Автопарк, имущество, ответственность — системно и по договору.</p>
             <span class="tag">Для бизнеса</span>
           </div>
           <div class="card service">
             <h3>Сопровождение убытка</h3>
-            <p>Поможем пройти процесс: документы, коммуникация, сервис, сроки.</p>
-            <span class="tag">Не остаётесь один</span>
+            <p>Подскажем шаги, документы и порядок действий для экономии времени.</p>
+            <span class="tag">Вы не одни</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="how">
+    <section id="how" class="anchor">
       <div class="wrap">
         <h2 class="section-title">Как работаем</h2>
         <div class="split">
           <div class="card service">
             <h3>1) Вы даёте вводные</h3>
-            <p>Короткая заявка или звонок: тип страхования, параметры, пожелания по бюджету.</p>
+            <p>Короткая заявка или звонок: параметры и пожелания по бюджету.</p>
             <span class="tag">30–60 секунд</span>
           </div>
           <div class="card service">
-            <h3>2) Мы подбираем варианты</h3>
-            <p>Сравниваем условия, объясняем разницу простыми словами, без магии.</p>
+            <h3>2) Подбираем варианты</h3>
+            <p>Сравниваем условия и объясняем разницу простыми словами.</p>
             <span class="tag">Прозрачно</span>
           </div>
           <div class="card service">
-            <h3>3) Оформление</h3>
+            <h3>3) Оформляем</h3>
             <p>Проверка данных, документы, оплата — и вы получаете полис.</p>
             <span class="tag">Под ключ</span>
           </div>
           <div class="card service">
             <h3>4) Поддержка</h3>
-            <p>Если случилось неприятное — поможем пройти шаги и не потерять время.</p>
+            <p>Если случилось неприятное — поможем пройти процесс без хаоса.</p>
             <span class="tag">С вами</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="faq">
+    <section id="faq" class="anchor">
       <div class="wrap">
         <h2 class="section-title">FAQ</h2>
         <div class="card faq">
           <details>
             <summary>Сколько занимает расчёт?</summary>
-            <p>Зависит от продукта и вводных. Если данные полные — обычно быстрее. Мы скажем срок сразу после заявки.</p>
+            <p>Зависит от продукта и вводных. Если данные полные — обычно быстрее. Срок скажем сразу после заявки.</p>
           </details>
           <details>
             <summary>Можно ли подобрать полис под бюджет?</summary>
-            <p>Да. Чаще всего можно играть покрытием, франшизой и опциями — важно честно понимать компромиссы.</p>
+            <p>Да. Чаще всего можно настроить покрытие, франшизу и опции — важно понимать компромиссы.</p>
           </details>
           <details>
             <summary>Вы помогаете при страховом случае?</summary>
@@ -394,17 +458,17 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="anchor">
       <div class="wrap">
-        <div class="card service" style="padding:18px">
+        <div class="card service" style="padding:16px">
           <h2 class="section-title" style="margin:0 0 10px">Контакты</h2>
           <p style="margin:0; color:var(--muted); font-size:13px">
-            Добавьте сюда телефон, WhatsApp, адрес офиса, часы работы и ссылки на соцсети.
+            Впишите реальные контакты ниже (телефон/WhatsApp/email). Адрес и часы работы — по желанию.
           </p>
           <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
             <span class="pill"><span class="dot"></span> Работаем: Пн–Сб</span>
-            <span class="pill">WhatsApp: +994 XX XXX XX XX</span>
-            <span class="pill">Email: hello@globalgroup.az</span>
+            <span class="pill" id="contactPhone">WhatsApp: +994 XX XXX XX XX</span>
+            <span class="pill" id="contactEmail">Email: hello@globalgroup.az</span>
           </div>
         </div>
       </div>
@@ -413,7 +477,7 @@
     <footer>
       <div class="wrap">
         <div class="foot">
-          <div>© <span id="y"></span> Global Group. Все права защищены.</div>
+          <div>© <span id="y"></span> Global Professional Group. Все права защищены.</div>
           <div style="display:flex; gap:12px; flex-wrap:wrap">
             <a href="#top">Наверх</a>
             <a href="#quote">Заявка</a>
@@ -425,10 +489,19 @@
   </main>
 
   <script>
-    // Год в футере
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Локальная отправка (без сервера): собираем текст и открываем WhatsApp/почту, чтобы не терять заявки.
+    // === SET YOUR REAL CONTACTS HERE ===
+    // WhatsApp number must be digits only (no +, no spaces)
+    const whatsappNumber = "994XXXXXXXXX"; // <-- ЗАМЕНИ на свой номер, например 994501234567
+    const email = "hello@globalgroup.az";  // <-- ЗАМЕНИ на свой email
+
+    // Update contact pills in footer section (visual only)
+    const contactPhone = document.getElementById('contactPhone');
+    const contactEmail = document.getElementById('contactEmail');
+    if (contactPhone) contactPhone.textContent = "WhatsApp: +" + whatsappNumber.replace(/^(\d{3})(\d+)/, "$1 $2");
+    if (contactEmail) contactEmail.textContent = "Email: " + email;
+
     const form = document.getElementById('leadForm');
     const result = document.getElementById('result');
 
@@ -442,21 +515,15 @@
       const details = (data.get('details') || '').toString().trim();
 
       const msg =
-`Заявка с сайта Global Group
+`Заявка с сайта Global Professional Group
 Имя: ${name}
 Телефон: ${phone}
 Запрос: ${type}
 Детали: ${details || '-'}`;
 
-      // Вариант 1: открыть WhatsApp (замени номер на свой, только цифры без +)
-      const whatsappNumber = "994XXXXXXXXX"; // <-- замените
       const wa = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-
-      // Вариант 2: mailto (на случай, если WhatsApp не настроен)
-      const email = "hello@globalgroup.az"; // <-- замените
       const mail = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent("Заявка: " + type)}&body=${encodeURIComponent(msg)}`;
 
-      // Пытаемся открыть WhatsApp, если не получилось — пользователь может нажать на mailto ниже
       result.innerHTML = `Готово. Сейчас откроется WhatsApp для отправки заявки.<br>
       Если WhatsApp не открылся — отправьте на email: <a href="${mail}">${email}</a>`;
 
